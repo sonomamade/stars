@@ -2,7 +2,7 @@
 	$(function() {
 		var $target	= $( '[data-bind="sonoma-stars-input"]' );
 		var $select	= $( '[data-bind="sonoma-stars-input"] select' );
-		var $el		= $( '<span><i data-value="1" class="fa fa-star-o"></i><i data-value="2" class="fa fa-star-o"></i><i data-value="3" class="fa fa-star-o"></i><i data-value="4" class="fa fa-star-o"></i><i data-value="5" class="fa fa-star-o"></i></span>' );
+		var $el		= $( '<span class="stars"><i data-value="1" class="fa fa-star-o"></i><i data-value="2" class="fa fa-star-o"></i><i data-value="3" class="fa fa-star-o"></i><i data-value="4" class="fa fa-star-o"></i><i data-value="5" class="fa fa-star-o"></i></span>' );
 		
 		$target.append( $el );
 		

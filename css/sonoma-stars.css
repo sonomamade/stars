@@ -1,4 +1,4 @@
-.sonoma.comment-form-rating label,
-.sonoma.comment-form-rating select {
+.sonoma-stars.comment-form-rating label,
+.sonoma-stars.comment-form-rating select {
 	display: none;
 }

@@ -3,7 +3,7 @@
  * Plugin Name: Sonoma Stars
  * Plugin URI: https://github.com/sonomamade/stars
  * Description: Five-star ratings.
- * Version: 0.0.1
+ * Version: 0.0.2
  * Author: Sonoma
  * Author URI: https://github.com/sonomamade
  * License: GPL3
@@ -124,7 +124,7 @@ if ( !class_exists( 'SonomaStars' ) ) {
 		}
 		
 		public function comment_form_defaults( $args ) {
-			$args['comment_field'] = '<p class="sonoma comment-form-rating" data-bind="sonoma-stars-input"><label for="rating">' . __( 'Your Rating', 'sonoma-stars' ) .'</label><select name="rating" id="rating">
+			$args['comment_field'] = '<p class="sonoma-stars comment-form-rating" data-bind="sonoma-stars-input"><label for="rating">' . __( 'Your Rating', 'sonoma-stars' ) .'</label><select name="rating" id="rating">
 							<option value="">'  . __( 'Rate&hellip;', 'sonoma-stars' ) . '</option>
 							<option value="5">' . __( 'Perfect', 'sonoma-stars' ) . '</option>
 							<option value="4">' . __( 'Good', 'sonoma-stars' ) . '</option>
