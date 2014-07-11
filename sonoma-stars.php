@@ -69,7 +69,7 @@ if ( !class_exists( 'SonomaStars' ) ) {
 				}
 			}
 			
-			$html = "<span class=\"sonoma-stars rating\" title=\"{$rating} of 5\">{$html}</span>";
+			$html = "<span class=\"sonoma-stars rating\" title=\"{$rating} of 5\"><span class=\"stars\">{$html}</span> <span class=\"count\">($count)</span> <span class=\"links\"><a href=\"#comments\">Read reviews</a> | <a href=\"#respond\">Write review</a></span></span>";
 			
 			echo $html;
 		}
