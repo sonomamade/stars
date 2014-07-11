@@ -1,0 +1,4 @@
+.sonoma.comment-form-rating label,
+.sonoma.comment-form-rating select {
+	display: none;
+}
