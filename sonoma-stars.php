@@ -3,7 +3,7 @@
  * Plugin Name: Sonoma Stars
  * Plugin URI: https://github.com/sonomamade/stars
  * Description: Five-star ratings.
- * Version: 0.0.1
+ * Version: 0.0.2
  * Author: Sonoma
  * Author URI: https://github.com/sonomamade
  * License: GPL3
