@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name: Sonoma Stars
- * Plugin URI: http://sonoma.io/plugins/stars
+ * Plugin URI: https://github.com/sonomamade/stars
  * Description: Five-star ratings.
- * Version: 0.0.0
+ * Version: 0.0.1
  * Author: Sonoma
- * Author URI: http://sonoma.io
+ * Author URI: https://github.com/sonomamade
  * License: GPL3
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
  */
