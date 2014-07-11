@@ -15,14 +15,35 @@ if ( !class_exists( 'SonomaStars' ) ) {
     register_activation_hook( __FILE__, array( 'SonomaStars', 'activation_hook' ) );
 
     class SonomaStars {
+		public static $slug 	= 'sonoma-stars';
+		public static $slug_	= 'sonoma_stars';
+	
 		public function __construct() {
 			add_filter( 'comment_form_defaults', array( $this, 'comment_form_defaults' ) );
 			
 			add_action( 'comment_post', array( $this, 'add_comment_rating' ), 1 );
+			
+			// Tag actions
+			add_action( 'the_average_rating', array( $this, 'rating_action' ), 1 );
+			add_action( 'the_rating_form', array( $this, 'rating_form' ), 1 );
+			
+			// Stylesheets and Scripts
+			wp_enqueue_style( 'font-awesome-css', plugins_url( '/css/font-awesome.css', __FILE__ ) );
+			wp_enqueue_style( 'sonoma-stars', plugins_url( '/css/sonoma-stars.css', __FILE__ ) );
+			
+			wp_enqueue_script( self::$slug_, plugin_dir_url( __FILE__ ) . 'js/sonoma-stars.js', array( 'jquery' ) );
 		}
 	
 		public static function activation_hook() {
 			
+		}
+		
+		public static function log( $message = '' ) {
+			error_log( $message . "\n", 3, plugin_dir_path( __FILE__ ) . 'error.log' );
+		}
+		
+		public static function rating_action() {
+			return self::rating( get_the_ID() );
 		}
 		
 		public static function rating( $post_id = false ) {
@@ -33,6 +54,8 @@ if ( !class_exists( 'SonomaStars' ) ) {
 			$rating = round( 2 * self::average_rating( $post_id ) ) / 2;
 			$count	= self::rating_count( $post_id );
 			$html	= "";
+			
+			self::log( "Rating: " . $rating . "; Post: ", $post_id );
 			
 			for ( $i = 0; $i < 5; $i++ ) {
 				if ( ( $rating - $i ) > 0.5 ) {
@@ -101,7 +124,7 @@ if ( !class_exists( 'SonomaStars' ) ) {
 		}
 		
 		public function comment_form_defaults( $args ) {
-			$args['comment_field'] = '<p class="comment-form-rating"><label for="rating">' . __( 'Your Rating', 'sonoma-stars' ) .'</label><select name="rating" id="rating">
+			$args['comment_field'] = '<p class="sonoma comment-form-rating" data-bind="sonoma-stars-input"><label for="rating">' . __( 'Your Rating', 'sonoma-stars' ) .'</label><select name="rating" id="rating">
 							<option value="">'  . __( 'Rate&hellip;', 'sonoma-stars' ) . '</option>
 							<option value="5">' . __( 'Perfect', 'sonoma-stars' ) . '</option>
 							<option value="4">' . __( 'Good', 'sonoma-stars' ) . '</option>
@@ -130,6 +153,10 @@ if ( !class_exists( 'SonomaStars' ) ) {
 					delete_transient( 'sonoma_rating_count_' . absint( $post_id ) );
 				}
 			}
+		}
+		
+		public static function rating_form() {
+			echo "Rating Input!";
 		}
     }
 
