@@ -55,8 +55,6 @@ if ( !class_exists( 'SonomaStars' ) ) {
 			$count	= self::rating_count( $post_id );
 			$html	= "";
 			
-			self::log( "Rating: " . $rating . "; Post: ", $post_id );
-			
 			for ( $i = 0; $i < 5; $i++ ) {
 				if ( ( $rating - $i ) > 0.5 ) {
 					$html .= "<i class=\"fa fa-star\"></i>";
@@ -124,14 +122,16 @@ if ( !class_exists( 'SonomaStars' ) ) {
 		}
 		
 		public function comment_form_defaults( $args ) {
-			$args['comment_field'] = '<p class="sonoma-stars comment-form-rating" data-bind="sonoma-stars-input"><label for="rating">' . __( 'Your Rating', 'sonoma-stars' ) .'</label><select name="rating" id="rating">
-							<option value="">'  . __( 'Rate&hellip;', 'sonoma-stars' ) . '</option>
-							<option value="5">' . __( 'Perfect', 'sonoma-stars' ) . '</option>
-							<option value="4">' . __( 'Good', 'sonoma-stars' ) . '</option>
-							<option value="3">' . __( 'Average', 'sonoma-stars' ) . '</option>
-							<option value="2">' . __( 'Not that bad', 'sonoma-stars' ) . '</option>
-							<option value="1">' . __( 'Very Poor', 'sonoma-stars' ) . '</option>
-						</select></p>' . $args['comment_field'];
+			if ( in_array( get_post_type(), array( 'recipe' ) ) ) {
+				$args['comment_field'] = '<p class="sonoma-stars comment-form-rating" data-bind="sonoma-stars-input"><label for="rating">' . __( 'Your Rating', 'sonoma-stars' ) .'</label><select name="rating" id="rating">
+								<option value="">'  . __( 'Rate&hellip;', 'sonoma-stars' ) . '</option>
+								<option value="5">' . __( 'Perfect', 'sonoma-stars' ) . '</option>
+								<option value="4">' . __( 'Good', 'sonoma-stars' ) . '</option>
+								<option value="3">' . __( 'Average', 'sonoma-stars' ) . '</option>
+								<option value="2">' . __( 'Not that bad', 'sonoma-stars' ) . '</option>
+								<option value="1">' . __( 'Very Poor', 'sonoma-stars' ) . '</option>
+							</select></p>' . $args['comment_field'];
+			}
 			
 			return $args;
 		}
